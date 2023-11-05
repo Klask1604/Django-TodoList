@@ -5,12 +5,15 @@
     <h1>Login</h1>
 </div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login"/>
-</form>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" />
+        <a class="interestbtn" href="{% url 'register' %}">Sign Up</a>
+    </form>
+</div>
 
-<a href="{% url 'register' %}">Sign Up</a>
+
 
 {% endblock content %}

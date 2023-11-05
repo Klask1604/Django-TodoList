@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +9,32 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
         *,
         *:before,
-        *:after{
-           
+        *:after {
+
             box-sizing: border-box;
         }
-        body{
+
+        body {
             height: 100vh;
             max-height: 1920px;
             max-width: 1080px;
-            background-color:rgb(167, 218, 218);
+            background-color: rgb(167, 218, 218);
             font-family: 'Roboto Condensed', sans-serif;
             overflow: hidden;
-            
+
         }
-        
-        .container{
+
+        .container {
             position: absolute;
             margin: auto;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            min-width: 400px;
             max-width: 550px;
-            height: 500px;
             max-height: 600px;
             background-color: aliceblue;
             border-radius: 5px;
@@ -43,39 +44,204 @@
             box-shadow: 10px 10px 50px rgb(0, 174, 255);
             overflow: hidden;
         }
-        hr{
-            padding: 0;
-            margin: 0;
-        }
-        .header{
+
+        .header {
             padding: 5px 20px 5px 20px;
             display: flex;
             justify-content: space-between;
             background-color: rgb(201, 236, 241);
-            font-family: 'Playpen Sans', cursive;;
+            font-family: 'Playpen Sans', cursive;
+            ;
         }
-        a{
+
+        a {
             text-decoration: none;
             color: black;
         }
-        .logout{
+
+        .interestbtn {
+            background-color: #67b5ff;
+            color: white;
+            padding: 8px;
+            border-radius: 10px;
+            border-color: rgb(151, 210, 245);
+            border: 2px solid black;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .interestbtn:hover {
+            color: white;
+            background-color: #14538f;
+        }
+
+        .logout {
             position: absolute;
             top: 3%;
             right: 5%;
-            
+
         }
-        .logout:hover{
-            color:rgb(8, 195, 179);
+
+        .logout:hover {
+            color: rgb(8, 195, 179);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            outline: none;
+            border: none;
+        }
+
+        .task-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #afedf877;
+            border-top: 1px solid #141516;
+            overflow: hidden;
+        }
+
+        .task-title {
+            display: flex;
+            padding: 20px;
+        }
+
+        .task-title a {
+            text-decoration: none;
+            color: #000000;
+            margin-left: 10px;
+        }
+
+        .task-complete-icon {
+            height: 20px;
+            width: 20px;
+            background-color: rgb(105, 192, 105);
+            border-radius: 50%;
+        }
+
+        .task-incomplete-icon {
+            height: 20px;
+            width: 20px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+        }
+
+        .delete-link {
+            text-decoration: none;
+            font-weight: 900;
+            color: #14538f;
+            font-size: 22px;
+            line-height: 0;
+            padding: 20px 0px;
+            margin-right: 15px;
+        }
+
+        #add-link {
+            color: #6fafeb;
+            text-decoration: none;
+            font-size: 42px;
+            text-shadow: 1px 1px #3b6781;
+            margin-right: 5px;
+        }
+
+        #search-add-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            margin-left: 10px;
+        }
+
+        @media screen and (max-width:320px) {
+            #search-add-wrapper {
+                padding: 10px;
+            }
+        }
+
+        input[type=submit] {
+            background-color: #67b5ff;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            border-color: rgb(151, 210, 245);
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            color: #14538f;
+            background-color: #ffffff;
+        }
+
+        input[type=text],
+        input[type=password],
+        textarea {
+            border: 1px solid #757575;
+            border-radius: 5px;
+            padding: 10px;
+            width: 90%;
+        }
+
+        label {
+            padding-top: 10px;
+            display: block;
+        }
+
+        ::placeholder {
+            font-weight: 300;
+            opacity: 0.5;
+        }
+
+        .button {
+            border: 2px solid #757575;
+            background-color: #FFF;
+            color: #73b7f7;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            margin-left: 5px;
+            transition: all .5s ease;
+        }
+
+        .button:hover {
+            color: #14538f;
+            background-color: #ffffff;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .register-account-bottom {
+            margin-left: 27px;
+            display: inline-block;
+            padding: 25px;
+            background-color: hsla(209, 100%, 70%, 0.527);
+            width: auto;
+            border-top-right-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 55px;
+            border-top-left-radius: 55px;
         }
     </style>
 </head>
+
 <body>
 
-    
-        <div class="container">
-            {% block content%}
-    
-            {% endblock content%}
-         </div>
+
+    <div class="container">
+        {% block content%}
+
+        {% endblock content%}
+    </div>
 </body>
+
 </html>
