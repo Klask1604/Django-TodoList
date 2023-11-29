@@ -10,6 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+from datetime import datetime, timedelta
+
 from .models import Task
 
 class CustomLoginView(LoginView):
@@ -39,7 +41,7 @@ class RegisterPage(FormView):
 class TaskList(LoginRequiredMixin , ListView):
     model = Task
     context_object_name = 'tasks'
-
+    
     def get_context_data(self , **kwargs):
         context = super().get_context_data(**kwargs)
         context ['tasks'] = context ['tasks'].filter(user=self.request.user)
@@ -50,7 +52,7 @@ class TaskList(LoginRequiredMixin , ListView):
             context['tasks'] = context['tasks'].filter(title__startswith=search_input)
         
         context['search_input'] = search_input
-        
+        context['is_task_list'] = True
         return context
     
 
@@ -77,3 +79,25 @@ class DeleteView(DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
+
+
+def navigate_calendar(current_date, direction):
+    # Convert current_date string to datetime object
+    current_date = datetime.strptime(current_date, '%Y-%m-%d')
+    
+    # Calculate new date range based on direction
+    if direction == '>':
+        new_date = current_date + timedelta(weeks=1)
+    elif direction == '<':
+        new_date = current_date - timedelta(weeks=1)
+    elif direction == '>>':
+        new_date = current_date + timedelta(weeks=4)  # Approximately 1 month
+    elif direction == '<<':
+        new_date = current_date - timedelta(weeks=4)  # Approximately 1 month
+    else:
+        # If direction is not recognized, return the current date
+        new_date = current_date
+
+    # Format new_date back to string
+    new_date_str = new_date.strftime('%Y-%m-%d')
+    return new_date_str
